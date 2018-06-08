@@ -26,6 +26,9 @@ public class Validator {
         if (!hasSpecialChar(password))
             failures++;
 
+        if (!isUpperAndLowerCase(password))
+            failures++;
+
         return failures;
     }
 
@@ -67,6 +70,8 @@ public class Validator {
      * @return isUpperAndLower
      */
     public static boolean isUpperAndLowerCase(String password) {
-        return false;
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasLowercase = !password.equals(password.toUpperCase());
+        return hasUppercase && hasLowercase;
     }
 }

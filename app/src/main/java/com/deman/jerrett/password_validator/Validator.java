@@ -45,4 +45,13 @@ public class Validator {
     public static boolean isMinChar(String password) {
         return password.length() >= minLength;
     }
+
+    /**
+     * Checks that the password as at least one non-alphanumeric char
+     * @param password
+     * @return
+     */
+    public static boolean hasSpecialChar(String password) {
+        return false;
+    }
 }

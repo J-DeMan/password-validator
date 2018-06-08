@@ -14,9 +14,6 @@ public class ValidatorUnitTest {
 
         boolean result = Validator.isCommon(pass);
         assertFalse(result);
-
-        int ruleFalures = Validator.validate(pass);
-        assertNotEquals(ruleFalures, 0);
     }
 
     /**
@@ -28,9 +25,6 @@ public class ValidatorUnitTest {
 
         boolean result = Validator.isCommon(pass);
         assertTrue(result);
-
-        int ruleFalures = Validator.validate(pass);
-        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -42,9 +36,6 @@ public class ValidatorUnitTest {
 
         boolean result = Validator.isMinChar(pass);
         assertTrue(result);
-
-        int ruleFalures = Validator.validate(pass);
-        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -56,9 +47,6 @@ public class ValidatorUnitTest {
 
         boolean result = Validator.isMinChar(pass);
         assertTrue(result);
-
-        int ruleFalures = Validator.validate(pass);
-        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -70,8 +58,49 @@ public class ValidatorUnitTest {
 
         boolean result = Validator.isMinChar(pass);
         assertFalse(result);
+    }
 
-        int ruleFalures = Validator.validate(pass);
-        assertNotEquals(ruleFalures, 0);
+    /**
+     * Checks that passwords with no special chars fail
+     */
+    @Test
+    public void noSpecialChar() {
+        String pass = "12345678abc";
+
+        boolean result = Validator.hasSpecialChar(pass);
+        assertFalse(result);
+    }
+
+    /**
+     * Checks that passwords with special chars pass
+     */
+    @Test
+    public void specialChar() {
+        String pass = "12345678abc%";
+
+        boolean result = Validator.hasSpecialChar(pass);
+        assertTrue(result);
+    }
+
+    /**
+     * Checks that passwords can pass
+     */
+    @Test
+    public void passwordsPass() {
+        String pass = "MargaretThatcherIs100&10%Sexy";
+
+        int result = Validator.validate(pass);
+        assertEquals(result, 0);
+    }
+
+    /**
+     * Checks that passwords can fail on one or more rules
+     */
+    @Test
+    public void passwordsFail() {
+        String pass = "bad";
+
+        int result = Validator.validate(pass);
+        assertNotEquals(result, 0);
     }
 }

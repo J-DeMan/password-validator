@@ -10,8 +10,13 @@ public class ValidatorUnitTest {
      */
     @Test
     public void isCommon() {
-        boolean result = Validator.isNotCommon("password");
+        String pass = "password";
+
+        boolean result = Validator.isCommon(pass);
         assertFalse(result);
+
+        int ruleFalures = Validator.validate(pass);
+        assertNotEquals(ruleFalures, 0);
     }
 
     /**
@@ -19,8 +24,13 @@ public class ValidatorUnitTest {
      */
     @Test
     public void isNotCommon() {
-        boolean result = Validator.isNotCommon("notCommon");
+        String pass = "notCommon";
+
+        boolean result = Validator.isCommon(pass);
         assertTrue(result);
+
+        int ruleFalures = Validator.validate(pass);
+        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -28,8 +38,13 @@ public class ValidatorUnitTest {
      */
     @Test
     public void isAboveMinChar() {
-        boolean result = Validator.isMinChar("above8Chars");
+        String pass = "above8Chars";
+
+        boolean result = Validator.isMinChar(pass);
         assertTrue(result);
+
+        int ruleFalures = Validator.validate(pass);
+        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -37,8 +52,13 @@ public class ValidatorUnitTest {
      */
     @Test
     public void isMinChar() {
-        boolean result = Validator.isMinChar("12345678");
+        String pass = "12345678";
+
+        boolean result = Validator.isMinChar(pass);
         assertTrue(result);
+
+        int ruleFalures = Validator.validate(pass);
+        assertEquals(ruleFalures, 0);
     }
 
     /**
@@ -46,7 +66,12 @@ public class ValidatorUnitTest {
      */
     @Test
     public void underMinChar() {
-        boolean result = Validator.isMinChar("1234567");
+        String pass = "1234567";
+
+        boolean result = Validator.isMinChar(pass);
         assertFalse(result);
+
+        int ruleFalures = Validator.validate(pass);
+        assertNotEquals(ruleFalures, 0);
     }
 }

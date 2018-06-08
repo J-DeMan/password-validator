@@ -116,6 +116,28 @@ public class ValidatorUnitTest {
     }
 
     /**
+     * Checks that passwords with at least one number pass
+     */
+    @Test
+    public void hasNum() {
+        String pass = "HJDSKfDSBCK4HES";
+
+        boolean result = Validator.hasNum(pass);
+        assertTrue(result);
+    }
+
+    /**
+     * Checks that passwords with no numbers fail
+     */
+    @Test
+    public void hasNoNum() {
+        String pass = "asdfgasdfKJH";
+
+        boolean result = Validator.hasNum(pass);
+        assertFalse(result);
+    }
+
+    /**
      * Checks that passwords can pass
      */
     @Test

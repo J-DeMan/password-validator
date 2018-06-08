@@ -29,6 +29,10 @@ public class Validator {
         if (!isUpperAndLowerCase(password))
             failures++;
 
+        if (!hasNum(password)){
+            failures++;
+        }
+
         return failures;
     }
 
@@ -73,5 +77,9 @@ public class Validator {
         boolean hasUppercase = !password.equals(password.toLowerCase());
         boolean hasLowercase = !password.equals(password.toUpperCase());
         return hasUppercase && hasLowercase;
+    }
+
+    public static boolean hasNum(String password) {
+        return false;
     }
 }

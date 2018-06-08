@@ -1,5 +1,7 @@
 package com.deman.jerrett.password_validator;
 
+import java.util.regex.Pattern;
+
 /**
  * A class that contains methods for validating passwords
  */
@@ -19,6 +21,9 @@ public class Validator {
             failures++;
 
         if (!isMinChar(password))
+            failures++;
+
+        if (!hasSpecialChar(password))
             failures++;
 
         return failures;
@@ -52,6 +57,7 @@ public class Validator {
      * @return
      */
     public static boolean hasSpecialChar(String password) {
-        return false;
+        Pattern p = Pattern.compile("[^a-zA-Z0-9]");
+        return p.matcher(password).find();
     }
 }

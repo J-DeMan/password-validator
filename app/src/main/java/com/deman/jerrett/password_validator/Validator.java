@@ -54,10 +54,19 @@ public class Validator {
     /**
      * Checks that the password as at least one non-alphanumeric char
      * @param password
-     * @return
+     * @return hasSpecial
      */
     public static boolean hasSpecialChar(String password) {
         Pattern p = Pattern.compile("[^a-zA-Z0-9]");
         return p.matcher(password).find();
+    }
+
+    /**
+     * Checks that the password has upper and lower case chars
+     * @param password
+     * @return isUpperAndLower
+     */
+    public static boolean isUpperAndLowerCase(String password) {
+        return false;
     }
 }

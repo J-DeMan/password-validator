@@ -83,6 +83,39 @@ public class ValidatorUnitTest {
     }
 
     /**
+     * Checks that all lower case passwords fail
+     */
+    @Test
+    public void allLower() {
+        String pass = "abcdrasdfsd";
+
+        boolean result = Validator.isUpperAndLowerCase(pass);
+        assertFalse(result);
+    }
+
+    /**
+     * Checks that all upper case passwords fail
+     */
+    @Test
+    public void allUpper() {
+        String pass = "HJDSKJDSBCKHES";
+
+        boolean result = Validator.isUpperAndLowerCase(pass);
+        assertFalse(result);
+    }
+
+    /**
+     * Checks that passwords with lower and upper case pass
+     */
+    @Test
+    public void upperAndLower() {
+        String pass = "HJDSKfDSBCKHES";
+
+        boolean result = Validator.isUpperAndLowerCase(pass);
+        assertTrue(result);
+    }
+
+    /**
      * Checks that passwords can pass
      */
     @Test

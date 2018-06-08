@@ -80,6 +80,7 @@ public class Validator {
     }
 
     public static boolean hasNum(String password) {
-        return false;
+        Pattern p = Pattern.compile("[^a-zA-Z]");
+        return p.matcher(password).find();
     }
 }

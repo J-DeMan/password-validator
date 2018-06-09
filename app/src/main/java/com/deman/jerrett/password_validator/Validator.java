@@ -79,6 +79,11 @@ public class Validator {
         return hasUppercase && hasLowercase;
     }
 
+    /**
+     * Checks that the password has at least one number
+     * @param password
+     * @return hasNumber
+     */
     public static boolean hasNum(String password) {
         Pattern p = Pattern.compile("[^a-zA-Z]");
         return p.matcher(password).find();
